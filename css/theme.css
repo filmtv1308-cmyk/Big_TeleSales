@@ -1,0 +1,98 @@
+/* Pastel iOS-like theme overrides (UX/UI refresh) */
+:root{
+  /* Pastel palette (calm, airy) */
+  --brand: #6ea8fe;      /* soft blue */
+  --brand-700: #4f8cf7;
+  --accent: #7dd3fc;     /* sky-300 */
+  --success: #86efac;    /* green-300 */
+  --warning: #fde68a;    /* amber-200 */
+
+  --bg: #f4f6fb;
+  --card: rgba(255,255,255,.82);
+  --border: rgba(15, 23, 42, .08);
+  --text: #0f172a;
+  --muted: rgba(15, 23, 42, .58);
+  --shadow: 0 14px 34px rgba(15, 23, 42, .08);
+
+  /* Rounded geometry: slightly rounded (not pill) */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+html{ font-size: 15px; }
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, "SF Pro Text", "SF Pro Display", Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(1200px 700px at 10% 0%, rgba(110,168,254,.16), transparent 55%),
+    radial-gradient(900px 520px at 90% 10%, rgba(125,211,252,.12), transparent 55%),
+    radial-gradient(900px 600px at 60% 100%, rgba(134,239,172,.10), transparent 55%),
+    var(--bg);
+  color: var(--text);
+}
+
+/* Softer focus ring */
+:focus-visible{ box-shadow: 0 0 0 4px rgba(110,168,254,.22) !important; outline: none; }
+
+/* Make surfaces feel like iOS cards */
+.bg-white{ background: var(--card) !important; }
+.glass{ background: rgba(255,255,255,.70) !important; border: 1px solid var(--border) !important; backdrop-filter: blur(14px); }
+
+/* Border & shadow normalization */
+.border{ border-color: var(--border) !important; }
+.shadow-sm{ box-shadow: var(--shadow) !important; }
+
+/* Header & sidebar glass */
+header{ background: rgba(255,255,255,.72) !important; backdrop-filter: blur(14px) !important; border-bottom-color: var(--border) !important; }
+#sidebar{ background: rgba(255,255,255,.72) !important; backdrop-filter: blur(14px) !important; border-right-color: var(--border) !important; }
+
+/* Buttons & inputs: iOS-like */
+button, .btn{
+  border-radius: var(--radius-md) !important;
+  letter-spacing: .01em;
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease;
+}
+button:active, .btn:active{ transform: translateY(0.5px); }
+
+input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="search"], input[type="number"], select, textarea{
+  border-radius: var(--radius-md) !important;
+  background: rgba(255,255,255,.86) !important;
+  border-color: rgba(15,23,42,.12) !important;
+  box-shadow: none !important;
+}
+input:focus, select:focus, textarea:focus{ border-color: rgba(79,70,229,.50) !important; }
+
+/* Primary buttons (Tailwind indigo -> pastel blue) */
+.bg-indigo-600{ background-color: var(--brand) !important; }
+.hover\:bg-indigo-700:hover{ background-color: var(--brand-700) !important; }
+.text-indigo-700{ color: var(--brand-700) !important; }
+
+/* Active menu state */
+.menu-link.bg-indigo-100{
+  background: rgba(110,168,254,.14) !important;
+  color: var(--brand-700) !important;
+  box-shadow: 0 10px 24px rgba(110,168,254,.12);
+}
+.menu-link.bg-indigo-100::before{ background: var(--brand) !important; }
+
+/* Images: "cutout" effect */
+.product-img, .product-img-table{
+  background: transparent !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 12px 22px rgba(2,6,23,.12));
+  mix-blend-mode: multiply;
+}
+
+/* Toasts & modal */
+.toast{ border-radius: var(--radius-lg) !important; }
+.modal-card{ border-radius: var(--radius-lg) !important; }
+
+/* Tables */
+table thead tr{ color: rgba(15,23,42,.55) !important; }
+table tbody tr:hover{ background: rgba(110,168,254,.06) !important; }
+
+/* Subtle scrollbars */
+::-webkit-scrollbar-thumb{ background: rgba(148,163,184,.55) !important; }
+
+/* Utility */
+.hidden{ display: none !important; }

@@ -1,0 +1,81 @@
+/* Components and layout helpers */
+
+/* Sticky catalog top bar */
+.catalog-sticky-bar{
+  position: sticky;
+  top: 0;
+  z-index: 55;
+  background: rgba(255,255,255,.72) !important;
+  backdrop-filter: blur(14px);
+  border-color: var(--border) !important;
+  box-shadow: 0 10px 22px rgba(15,23,42,.08);
+}
+
+/* Sticky left filters */
+#catLayout > aside{
+  position: sticky;
+  top: 76px; /* below the sticky top bar */
+  align-self: start;
+  max-height: calc(100vh - 96px);
+  overflow: auto;
+}
+@media (max-width: 1024px){
+  #catLayout > aside{ position: relative; top: auto; max-height: none; overflow: visible; }
+}
+
+/* Catalog grid */
+.grid-cards { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 8px; }
+@media (min-width: 640px){ .grid-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 768px){ .grid-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px){ .grid-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1280px){ .grid-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; } }
+
+/* Product card compact sizing */
+.product-card{ padding: 8px !important; }
+/* Product image sizes (compact) */
+.product-img{ width: 100%; height: 96px; }
+.product-img-table{ width: 48px; height: 48px; }
+
+/* Promo cards */
+#promoCardsWrap{ padding-top: 6px !important; padding-bottom: 6px !important; background: rgba(255,255,255,.72) !important; backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow); }
+#promoCardsTrack{ gap:8px; }
+#promoCardsTrack .promo-card{
+  height: 110px; /* compact */
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-radius: var(--radius-md); border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(15,23,42,.06);
+  background: linear-gradient(135deg, rgba(110,168,254,.16), rgba(125,211,252,.14));
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+#promoCardsTrack .promo-card:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(15,23,42,.12); }
+#promoCardsTrack .promo-card .promo-cover{ height: 58px; overflow: hidden; border-radius: calc(var(--radius-md) - 4px); }
+#promoCardsTrack .promo-card .promo-title{ font-weight: 600; font-size: .95rem; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#promoCardsTrack .promo-card .promo-footer{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
+
+/* Modal sizing (product) */
+.modal-card.modal-product{ max-width: 330px; max-height: 65vh; }
+.modal-card.modal-product #modalContent{ max-height: calc(65vh - 120px); overflow: auto; }
+
+/* Soft rounded theme for many elements */
+.soft-rounded .btn,
+.soft-rounded input,
+.soft-rounded select,
+.soft-rounded textarea,
+.soft-rounded .rounded,
+.soft-rounded .rounded-lg,
+.soft-rounded .rounded-xl,
+.soft-rounded .rounded-2xl,
+.soft-rounded .dropdown-menu,
+.soft-rounded .modal-card,
+.soft-rounded .toast,
+.soft-rounded .border,
+.soft-rounded .shadow-sm{
+  border-radius: var(--radius-md) !important;
+}
+.soft-rounded .badge{ border-radius: 9999px !important; }
+
+/* Scrollbars */
+.scrollbar-thin{ scrollbar-width: thin; }
+.scrollbar-thin::-webkit-scrollbar{ height: 8px; width: 8px; }
+.scrollbar-thin::-webkit-scrollbar-thumb{ background: rgba(148,163,184,.75); border-radius: 999px; }
+.scrollbar-thin::-webkit-scrollbar-thumb:hover{ background: rgba(100,116,139,.7); }
